@@ -1,7 +1,7 @@
 %include "asm_io.inc"
 segment .data
 
-no0 db		"No 0", 0
+no0 db		"estou aqui", 0
 
 varM	db 0
 varN	db 0
@@ -26,12 +26,12 @@ asm_main:
 	pusha
 	mov		eax, 0
 	mov		[buracos + 0], eax
-	;read N
+	;read N numero de pilares
 	call	read_int
 	mov		[varN], eax
 	add		eax,1
 	mov		[final], eax
-	;read M
+	;read M numero de pontes
 	call	read_int
 	mov		[varM], eax
 	
@@ -51,9 +51,24 @@ asm_main:
 		call	read_int
 		mov		[vect + ebx], eax
 		
+		add 	ebx, 1
+		
 		loop	readVector
 	
-	add		ebx, 1
+	;debug
+		mov 	eax, no0
+		call	print_string
+		call	print_nl
+		mov		eax, 10
+	mov		eax, ebx
+	call 	print_int
+	
+	;debug
+		mov 	eax, no0
+		call	print_string
+		call	print_nl
+	
+	;add		ebx, 1
 	mov		eax, 55
 	mov		[vect + ebx], eax
 	
@@ -76,20 +91,18 @@ func_vet:
 	mov		edx, [vect + ebx] ;qtd de buracos
 	mov		[ebp-12], edx; liberando edx	
 	
+	;mov		eax, 0;[ebp-4]
+	;call	print_int
 	
 	
-	
-	mov		eax, [ebp-4]
-	call	print_int
-	;call	print_nl
-	
-	;debug
-	;	mov 	eax, no0
-	;	call	print_string
-	;	call	print_nl
-	
-	mov		edx, [buracos + eax] ;armezenando qtd de buracos na fonte		
+	;APARENTEMENTE O SEGMENTATION FAULT APARECE AQUI!
+	mov		edx, [buracos + eax] ;pegando qtd de buracos na fonte		
 	add		edx, [ebp-12] ;somando qtd de buracos para destino
+	
+				;debug
+		mov 	eax, no0
+		call	print_string
+		call	print_nl
 	
 	cmp		[buracos + ecx], edx ;comparando c/ qtd de buracos existente
 	jg		bigger
