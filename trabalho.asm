@@ -92,10 +92,10 @@ func_vet:
 	mov		[ebp-12], edx; liberando edx	
 	
 	;mov		eax, 0;[ebp-4]
-	;call	print_int
+	call	print_int
 	
 	
-	;APARENTEMENTE O SEGMENTATION FAULT APARECE AQUI!
+	;APARENTEMENTE O SEGMENTATION FAULT APARECE AQUI NO COMANDO MOV!
 	mov		edx, [buracos + eax] ;pegando qtd de buracos na fonte		
 	add		edx, [ebp-12] ;somando qtd de buracos para destino
 	
