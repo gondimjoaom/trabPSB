@@ -11,7 +11,7 @@ varB	db 0
 final	db 0
 var		db 0
 ;buracos		db 0
-buracos	times 300 db 51
+buracos	times 300 db 55
 
 segment .bss
 
@@ -28,7 +28,7 @@ asm_main:
 	mov		[buracos + 0], eax
 	;read N numero de pilares
 	call	read_int
-	mov		[varN], eax
+	mov		[varN], eax ;não estou usando isso para nada!!
 	add		eax, 1
 	mov		[final], eax
 	;read M numero de pontes
@@ -57,18 +57,18 @@ asm_main:
 		loop	readVector
 	
 	;debug
-		mov 	eax, no0
-		call	print_string
-		call	print_nl
+		;mov 	eax, no0
+		;call	print_string
+		;call	print_nl
 		;mov		eax, 10
 	;mov		ebx, 0
 	;mov		eax, [vect + ebx]
 	;call	print_int
 	
 	;debug
-		mov 	eax, no0
-		call	print_string
-		call	print_nl
+		;mov 	eax, no0
+		;call	print_string
+		;call	print_nl
 	
 	;add		ebx, 1
 	mov		eax, 55
@@ -87,7 +87,7 @@ func_vet:
 	;mov		eax, ebx
 	;call	print_int
 	
-	mov		eax, [vect + ebx] ;fonte
+	mov		eax, [vect + ebx] ;fonte /já está salvo em vect
 	mov		[ebp-4], eax ;liberando eax
 	;call	print_int
 	
@@ -102,26 +102,36 @@ func_vet:
 	;mov		eax, 0;[ebp-4]
 	;call	print_int
 	
-	mov		edx, [buracos + eax] ;pegando qtd de buracos na fonte		
+	mov		edx, [buracos + eax*4] ;pegando qtd de buracos na fonte/multiplicar eax por 4
 	add		edx, [ebp-12] ;somando qtd de buracos para destino
 	
 			;debug
+		;mov 	eax, no0
+		;call	print_string
+		;call	print_nl
+	
+	cmp		[buracos + ecx*4], edx ;comparando c/ qtd de buracos existente
+	
+	jg		bigger
+	mov		[buracos + ecx*4], edx ;se for menor, colocar a qtd de buracos nova
+	bigger:
+	
+	add 	ebx, 16
+	mov		eax, 55
+	;mov		eax, ebx
+	;call	print_int
+	mov		eax, [vect + ebx]
+	call	print_int
+	cmp		[vect + ebx], eax
+	jz		finaliza
+	call	func_vet
+	finaliza:
+	
+				;debug
 		mov 	eax, no0
 		call	print_string
 		call	print_nl
 	
-	cmp		[buracos + ecx], edx ;comparando c/ qtd de buracos existente
-	
-	jg		bigger
-	mov		[buracos + ecx], edx ;se for menor, colocar a qtd de buracos nova
-	bigger:
-	
-	add ebx, 4
-	mov		eax, 55
-	cmp		[buracos + ebx], eax
-	jz		finaliza
-	call	func_vet
-	finaliza:
 	leave
 	ret
 	
