@@ -91,11 +91,11 @@ func_vet:
 	mov		[ebp-4], eax ;liberando eax
 	;call	print_int
 	
-	add		ebx, 1
+	add		ebx, 4
 	mov		ecx, [vect + ebx] ;destino
 	mov		[ebp-8], ecx ;liberando ecx
 	
-	add		ebx, 1
+	add		ebx, 4
 	mov		edx, [vect + ebx] ;qtd de buracos
 	mov		[ebp-12], edx; liberando edx	
 	
@@ -116,7 +116,7 @@ func_vet:
 	mov		[buracos + ecx], edx ;se for menor, colocar a qtd de buracos nova
 	bigger:
 	
-	add ebx, 1
+	add ebx, 4
 	mov		eax, 55
 	cmp		[buracos + ebx], eax
 	jz		finaliza
@@ -125,7 +125,7 @@ func_vet:
 	leave
 	ret
 	
-sub		ebx, 1
+sub		ebx, 4
 mov		eax,[buracos + ebx]	
 call 	print_int
 
