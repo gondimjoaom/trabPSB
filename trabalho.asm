@@ -127,7 +127,7 @@ func_vet:
 	call	func_vet
 	finaliza:
 	
-				;debug
+		;debug
 		mov 	eax, no0
 		call	print_string
 		call	print_nl
