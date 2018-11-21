@@ -42,15 +42,15 @@ asm_main:
 	mov		ebx, 0
 	
 	readVector:
-		;add S
+		;add S fonte
 		call	read_int
 		;call	print_int
 		mov		[vect + ebx], eax
-		;add T
+		;add T destino
 		add		ebx, 4
 		call	read_int
 		mov		[vect + ebx], eax
-		;add B
+		;add B buracos
 		add		ebx, 4
 		call	read_int
 		mov		[vect + ebx], eax
@@ -63,19 +63,19 @@ asm_main:
 	;mov		eax, ebx
 	;call	print_int
 	;call	print_nl
-	mov		eax, 55
-	mov		[vect + ebx], eax
+	;mov		eax, 55
+	;mov		[vect + ebx], eax
 	
 	mov		ebx, 0
-	pop		eax
+	pop		ecx
 	;call	print_int
-	mov		ecx, eax
+	;mov		ecx, eax
 	;mov		ecx, [varM]
 	
 	logica:
 	
 		mov		eax, [vect + ebx*4] ;fonte
-		mov		[fonte], eax
+		;mov		[fonte], eax
 		push	ecx
 		mov		ecx, [buracos + eax*4] ;ecx tem quantos buracos precisou para chegar na fonte
 		
