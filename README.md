@@ -1,4 +1,4 @@
-#Descrição do Geral
+# Descrição do Geral
 
 Fulaninho é um rapaz muito aventureiro, que nas férias viaja pelo mundo em busca de lugares afastados e
 com bonitas vistas. Na sua viagem atual, Fulaninho está andando por uma escura floresta quando se depara
@@ -30,3 +30,8 @@ ligando os pilares S e T , e que possui B buracos. Não existe linha representan
 de pilar 0 representa a borda do desfiladeiro onde Pedrinho está, e o valor de pilar N + 1 representa a borda
 do desfiladeiro onde está o acampamento. Não existem duas pontes distintas ligando o mesmo par de locais
 (pilares ou bordas do desfiladeiro).
+
+Saída
+
+Seu programa deve imprimir, na saída padrão, um número inteiro representando a menor quantidade de
+buracos que Pedrinho terá que pular para conseguir chegar ao acampamento.
